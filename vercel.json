@@ -1,0 +1,24 @@
+{
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "devCommand": "vite",
+  "installCommand": "npm install",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/gigs/:id", "destination": "/api/gigs/[id]" },
+    { "source": "/api/reviews/:gigId", "destination": "/api/reviews/[gigId]" },
+    { "source": "/api/export/:type", "destination": "/api/export/[type]" },
+    { "source": "/api/contracts/requests", "destination": "/api/contracts/index?action=requests" },
+    { "source": "/api/contracts/request/:gigId", "destination": "/api/contracts/index?gigId=:gigId" },
+    { "source": "/api/contracts/respond/:id", "destination": "/api/contracts/index?action=respond&requestId=:id" },
+    { "source": "/api/notifications/unread-count", "destination": "/api/notifications/index?action=unread-count" },
+    { "source": "/api/notifications/read-all", "destination": "/api/notifications/index?action=read-all" },
+    { "source": "/api/notifications/:id/read", "destination": "/api/notifications/index?action=read&id=:id" },
+    { "source": "/api/notifications", "destination": "/api/notifications/index" },
+    { "source": "/((?!api/.*).*)", "destination": "/index.html" }
+  ]
+}

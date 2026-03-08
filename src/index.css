@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #6d28d9;
+  --color-brand-slate: #1e293b;
+  --color-brand-dark: #0f172a;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-lg border border-white/10 shadow-2xl;
+  }
+}
+
+/* Dark theme (default) */
+body {
+  @apply text-slate-100 min-h-screen font-sans;
+  background: radial-gradient(ellipse at top right, #4c1d95 0%, #0f172a 50%, #0f172a 100%);
+  background-attachment: fixed;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Light theme */
+html.light body {
+  @apply text-slate-900;
+  background: radial-gradient(ellipse at top right, #ddd6fe 0%, #f1f5f9 50%, #ffffff 100%);
+}
+
+html.light .glass {
+  @apply bg-white/60 border-white/80 shadow-lg;
+}
+
+html.light .text-slate-400 { @apply text-slate-500; }
+html.light .text-slate-500 { @apply text-slate-600; }
+html.light .text-slate-300 { @apply text-slate-700; }
+html.light .bg-white\/5  { @apply bg-black/5; }
+html.light .bg-white\/10 { @apply bg-black/10; }
+html.light .bg-black\/20 { @apply bg-white/70; }
+html.light .border-white\/10 { border-color: rgba(0,0,0,0.1); }
+html.light .border-white\/20 { border-color: rgba(0,0,0,0.15); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(109,40,217,0.3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(109,40,217,0.5); }
